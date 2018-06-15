@@ -3,6 +3,10 @@
 
 Mobile-Food-Finder
 
+Are you hungry? Are you looking for something mobile and fast? Try Mobile-Food-Finder for finding that perfect food truck anywhere near you. With a simple to use interface for finding that perfect truck.
+
+Or are you are food truck owner trying to let people know you are open for business? Mobile-Food-Finder incorporates that same simple to use functionality for your eaters, but for YOU. Simply sign up, sign in, and share your location. Sharing you location will let anyone in the vicinity know your truck is open and ready for business. 
+
 /////////Wireframe flow:///////////////
 Wireframe flow chart: https://www.lucidchart.com/invitations/accept/990e30b3-8328-4629-b5c2-f23873e76099
 
