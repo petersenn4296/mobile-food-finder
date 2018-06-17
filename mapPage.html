@@ -9,6 +9,7 @@
   <!-- Compiled and minified JavaScript -->
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script>
   <meta charset="utf-8">
   <style>
     /* Always set the map height explicitly to define the size of the div
@@ -45,6 +46,8 @@
         lat: 40.0149860,
         lng: -105.2705460
       };
+
+
       var contentString = '<div class="card">' +
         '<div class="col s12 m6">' + '<div class="card-content black-text">' +
         '<span class="card-title">Food Truck!</span>' +
@@ -62,12 +65,10 @@
         center: myLatLng
       });
       infoWindow = new google.maps.InfoWindow
-      infoWindow = new google.maps.InfoWindow({
-        content: contentString,
-        maxWidth: 200
-      });
 
-      var marker = new google.maps.Marker({
+
+
+       var marker = new google.maps.Marker({
         position: {
           lat: 40.0149860,
           lng: -105.2705460
@@ -77,27 +78,33 @@
       });
       marker.addListener('click', function() {
         console.log('CLICKED', marker);
+        // infoWindow.close();
+        infoWindow = new google.maps.InfoWindow({
+          content: contentString,
+          maxWidth: 200
+        });
         infoWindow.open(map, marker);
       });
 
-      // if (navigator.geolocation) {
-      //   navigator.geolocation.getCurrentPosition(function(position) {
-      //     var pos = {
-      //       lat: position.coords.latitude,
-      //       lng: position.coords.longitude
-      //     };
-      //
-      //     infoWindow.setPosition(pos);
-      //     infoWindow.setContent('Location found.');
-      //     infoWindow.open(map);
-      //     map.setCenter(pos);
-      //   }, function() {
-      //     handleLocationError(true, infoWindow, map.getCenter());
-      //   });
-      // } else {
-      //   // Browser doesn't support Geolocation
-      //   handleLocationError(false, infoWindow, map.getCenter());
-      // }
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+
+          infoWindow.setPosition(pos);
+          infoWindow.setContent('Edison likes infoWindow.');
+          infoWindow.open(map);
+          map.setCenter(pos);
+        }, function() {
+          handleLocationError(true, infoWindow, map.getCenter());
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+      }
     }
 
     function handleLocationError(browserHasGeolocation, infoWindow, pos) {
