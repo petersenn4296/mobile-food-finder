@@ -1,24 +1,37 @@
 /////////EXPRESS SERVER SET UP////////////
 
-
+//Variables to Require all dependencies and invoke as fucntions
 let express = require('express')
 let morgan = require('morgan')
 let bodyParser = require('body-parser')
 let app = express()
 
-let port = process.env.PORT || 4000
-const listener = () => {console.log(`Listening in on port ${port}.`)}
+//Set port as variable and console log to check if sever starts and where
+let port = process.env.PORT || 3000
+let listener = () => {console.log(`Listening in on port ${port}.`)}
+app.listen(port, listener)
 
+//Set variable knex to require file knex.js
 let knex = require('./knex')
 
+//use body parser and make public files
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 app.use(morgan('dev'))
 app.use(express.static('public'))
-app.listen(port, listener)
+
+//Catch all for bad requests
+app.use((req, res, next) => {
+  res.status(404).json({error:{message:"404 Not Found"}})
+})
 
 
 //////////////ROUTES//////////////
+
+//Landing page
+app.get('/', function(req, res, next) {
+  res.send("welcome to the home page")
+})
 
 ///EATER GET specific truck info on map
 app.get('/:truck_id', function(req, res, next) {
@@ -52,10 +65,3 @@ app.patch('/owners/:owners_ID/trucks/:truck_id/', (req, res, next) => {
   //code block to update a trucks location after hitting Google Maps API. AJAX to check if online
 })
 /////////STRETCH///////////
-
-
-
-//Catch all for bad requests
-app.use((req, res, next) => {
-  res.status(404).json({error:{message:"404 Not Found"}})
-})
