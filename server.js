@@ -8,7 +8,7 @@ let app = express()
 
 //Set port as variable and console log to check if sever starts and where
 let port = process.env.PORT || 3000
-let listener = () => {console.log(`Listening in on port ${port}...`)}
+let listener = () => {console.log(`Listening in on port ${port}.....`)}
 app.listen(port, listener)
 
 //Set variable knex to require file knex.js
