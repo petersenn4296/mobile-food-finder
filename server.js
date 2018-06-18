@@ -20,13 +20,9 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 app.use(express.static('public'))
 
-//Catch all for bad requests
-app.use((req, res, next) => {
-  res.status(404).json({error:{message:"404 Not Found"}})
-})
-
 
 //////////////ROUTES//////////////
+
 
 //Landing page
 app.get('/', function(req, res, next) {
@@ -34,14 +30,31 @@ app.get('/', function(req, res, next) {
 })
 
 //Register OWNER
-app.post('/owners/owner_signup', (req, res, next) => {
-  res.status(200).send("owner sign up")
-  //code block to register, and enter the information of a new food Truck into the database.
+app.post('/owner_signup', (req, res, next) => {
+  let username = req.body.username
+  let password = req.body.password
+  let email = req.body.email
+  knex('owners')
+    .insert({
+      "username": username, //hashed
+      "password": password, //hashed
+      "email": email
+    })
+    // .returning('*')
+    .then((data) => {
+      console.log(data[0]);
+      res.json(data[0])
+    })
+    .catch((err) => {
+      next(err)
+    })
 })
 
 //Logging In OWNER
-app.post('/owners/owner_login', (req, res, next) => {
-  res.send(200, "post request to authenticate owner logging in")
+app.post('/owner_login', (req, res, next) => {
+  knex.select('owners').where('username', username).where('password', password).then(function(data) {
+    res.send(data)
+  })
   //code block to authenticate Owners username and password
 })
 
@@ -65,3 +78,8 @@ app.get('/:truck_id', function(req, res, next) {
   //code block to get specific trucks locations from database
 });
 /////////STRETCH///////////
+
+//Catch all for bad requests
+app.use((req, res, next) => {
+  res.status(404).json({error:{message:"404 Not Found"}})
+})
