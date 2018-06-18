@@ -6,3 +6,11 @@ body {
   color:#D34C47;
 }
 
+.col.offset-4 {
+  padding:0px;
+  margin-left:0px;
+}
+
+.col.offset-4 {
+}
+
