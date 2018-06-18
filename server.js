@@ -33,12 +33,6 @@ app.get('/', function(req, res, next) {
   res.send("welcome to the home page")
 })
 
-///EATER GET specific truck info on map
-app.get('/:truck_id', function(req, res, next) {
-  // return knex('trucks')
-  //code block to get specific trucks locations from database
-});
-
 //Register OWNER
 app.post('/owners/owner_signup', (req, res, next) => {
   res.status(200).send("owner sign up")
@@ -64,4 +58,10 @@ app.patch('/owners/:owners_ID/trucks/:truck_id/', (req, res, next) => {
   res.send(200, "owner edit truck")
   //code block to update a trucks location after hitting Google Maps API. AJAX to check if online
 })
+
+///EATER GET specific truck info on map
+app.get('/:truck_id', function(req, res, next) {
+  // return knex('trucks')
+  //code block to get specific trucks locations from database
+});
 /////////STRETCH///////////
