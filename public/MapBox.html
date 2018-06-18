@@ -13,27 +13,23 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
+        #marker {
+            background-image: url('/mapbox-gl-js/assets/washington-monument.jpg');
+            background-size: cover;
+            background: red;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .mapboxgl-popup {
+            max-width: 200px;
+        }
+
     </style>
 </head>
 <body>
-
-<style>
-
-#marker {
-    background-image: url('/mapbox-gl-js/assets/washington-monument.jpg');
-    background-size: cover;
-    background: red;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.mapboxgl-popup {
-    max-width: 200px;
-}
-
-</style>
 
 <div id='map'></div>
 
