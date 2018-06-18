@@ -13,10 +13,9 @@
     <style>
         body { margin:0; padding:0; }
         #map { position:absolute; top:0; bottom:0; width:100%; }
-        #marker {
-            background-image: url('/mapbox-gl-js/assets/washington-monument.jpg');
+        #mexico {
+            background-image:url('/Users/edisontoole/g89/q2/projects/mobile-food-finder/public/img/mexican-truck.jpg');
             background-size: cover;
-            background: red;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -50,7 +49,8 @@ var popup = new mapboxgl.Popup({closeOnClick: true})
 
 // create DOM element for the marker
 var el = document.createElement('div');
-el.id = 'marker';
+el.id = 'mexico';
+
 
 // create the marker
 new mapboxgl.Marker(el)
