@@ -1,0 +1,8 @@
+body {
+  background-color:#AAFFFF;
+}
+
+.btn:not(:disabled):not(.disabled) {
+  color:#D34C47;
+}
+
