@@ -74,20 +74,25 @@ app.post('/owner_signup', (req, res, next) => {
 app.post('/owner_signon', (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
-  knex('owners').where({'username': username, 'password': password})
-  .returning('*')
+  knex('owners')
+  .where('username', username)
+  .andWhere('password', password)
+  // .returning('*')
   .then((data) => {
+    console.log(data)
+    // res.send(data)
 
-    // console.log(typeof data)
-    if (Object.values() == data[0][0] && password == data[0][1]) {
+    // if(data.length > 1) {
+    //   console.log('length is greater than 1');
+    // }
+
+    if (data[0].password && data[0].username) {
       // res.json()
-      console.log('u did it');
-    } else {
-      console.log("u suk");
+      res.send(200, 'u did it');
     }
   })
   .catch((err) => {
-    next(err)
+    res.send("Please enter the correct info")
   })
   //code block to authenticate Owners username and password
 })
