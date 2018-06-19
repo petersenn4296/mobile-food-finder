@@ -26,13 +26,13 @@ app.use(express.static('public'))
 //Create truck in database
 app.post('/create_truck', function(req, res, next) {
   let name = req.body.name
-  // let cuisines = req.body.cuisines
+  let cuisines = req.body.cuisines
   let veggiefriendly = req.body.veggiefriendly
   let url = req.body.url
   knex('trucks')
     .insert({
       "name": name,
-      // "cuisines": cuisines,
+      "cuisine_id": cuisines,
       "veggiefriendly": veggiefriendly,
       "url": url
     })
@@ -47,7 +47,7 @@ app.post('/create_truck', function(req, res, next) {
 
 })
 //Register OWNER
-app.post('/owner_signup', (req, res, next) => {
+app.post('owners/owner_signup', (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
   let email = req.body.email

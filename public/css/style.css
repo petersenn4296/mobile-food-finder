@@ -1,3 +1,6 @@
+.color {
+  background-color: lightblue
+}
 /* Index page */
 .logo {
   justify-content: center;
@@ -17,11 +20,17 @@
   justify-content: center;
   /* width: 400px; */
 }
-#button1 {
-  /* height: 150px;
+/* #button1 {
+  height: 150px;
   width: 300px;
-  font-size: 150px; */
+  font-size: 150px;
   font-family: Lobster, cursive;
+} */
+#eaterbutton {
+  height: 150px;
+  width: 300px;
+  font-size: 70px;
+    font-family: Lobster, cursive;
 }
 
 
