@@ -1,69 +1,175 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8' />
-    <title>MAP BOX</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
-    <style>
-        body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
-        #mexico {
-            background-image:url('/Users/edisontoole/g89/q2/projects/mobile-food-finder/public/img/mexican-truck.jpg');
-            background-size: cover;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-        .mapboxgl-popup {
-            max-width: 200px;
-        }
-    </style>
+<head>
+  <meta charset='utf-8' />
+  <title>MAP BOX</title>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    #mexico {
+      background-image: url('/Users/edisontoole/g89/q2/projects/mobile-food-finder/public/img/food-truck.jpg');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #asian {
+      background-image: url('/Users/edisontoole/g89/q2/projects/mobile-food-finder/public/img/food-truck.jpg');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #bbq {
+      background-image: url('/Users/edisontoole/g89/q2/projects/mobile-food-finder/public/img/food-truck.jpg');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    #ish {
+      background-image: url('/Users/edisontoole/g89/q2/projects/mobile-food-finder/public/img/food-truck.jpg');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .mapboxgl-popup {
+      max-width: 200px;
+    }
+
+    #info {
+      display: block;
+      position: relative;
+      margin: 0px auto;
+      width: 50%;
+      padding: 10px;
+      border: none;
+      border-radius: 3px;
+      font-size: 12px;
+      text-align: center;
+      color: #222;
+      background: #fff;
+    }
+  </style>
 </head>
+
 <body>
 
   <div id='map'></div>
+  <pre id='info'></pre>
+  <script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZWRpc29udG9vbGUiLCJhIjoiY2pncXdnajM2MGg2ejJ4cGUzdW92bDNzcCJ9.YG4_JLO78bqmlpBcLHzuWw';
+    var coord1 = [-105.2705460, 40.0149860];
+    var coord2 = [-105.25937825624439, 40.02993760281393];
+    var coord3 = [-105.25937547070696, 40.02988516287684];
+    var coord4 = [-105.25937812395816, 40.0299116383556];
 
-<script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiZWRpc29udG9vbGUiLCJhIjoiY2pncXdnajM2MGg2ejJ4cGUzdW92bDNzcCJ9.YG4_JLO78bqmlpBcLHzuWw';
-var fluck = [-105.2705460, 40.0149860];
-var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-    center: fluck,
-    zoom: 15
-});
-var popup = new mapboxgl.Popup({closeOnClick: true})
-    .setLngLat(fluck)
-    .setHTML('<div class="card">  <div class="col s12 m6"> <div class="card-content black-text">  <span class="card-title">Food Truck!</span>  <p>I am a food truck card. I hold information about the food truck.  </p> </div>  <div class="card-action"> <a href="#">Link</a> </div> </div> </div>')
-// create DOM element for the marker
-var el = document.createElement('div');
-el.id = 'mexico';
-<<<<<<< HEAD:public/MapBox.html
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v9',
+      center: coord1,
+      zoom: 12
+    });
 
-=======
-<<<<<<< HEAD
-=======
->>>>>>> 886f185293ccbf24dc01434d73a803d0b530a3ba
->>>>>>> aff4106d25ccba1528cee82646422f521a374551:public/eater_map.html
-// create the marker
-new mapboxgl.Marker(el)
-    .setLngLat(fluck)
-    .setPopup(popup) // sets a popup on this marker
-    .addTo(map);
+    var mexPop = new mapboxgl.Popup({
+        closeOnClick: true
+      })
+      .setHTML(
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text">  <span class="card-title">MEXICAN</span>  <p>I am a food truck. We sell Mexico foods.  </p> </div>  <div class="card-action"> <a href="https://www.mexico.com">Link</a> </div> </div> </div>'
+      )
+    var asianPop = new mapboxgl.Popup({
+        closeOnClick: true
+      })
+      .setHTML(
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text">  <span class="card-title">Food Truck!</span>  <p>I am a food truck card. I hold information about the food truck.  </p> </div>  <div class="card-action"> <a href="#">Link</a> </div> </div> </div>'
+      )
+    var bbqPop = new mapboxgl.Popup({
+        closeOnClick: true
+      })
+      .setHTML(
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text">  <span class="card-title">Food Truck!</span>  <p>I am a food truck card. I hold information about the food truck.  </p> </div>  <div class="card-action"> <a href="#">Link</a> </div> </div> </div>'
+      )
+    var pop4 = new mapboxgl.Popup({
+        closeOnClick: true
+      })
+      .setHTML(
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text">  <span class="card-title">Food Truck!</span>  <p>I am a food truck card. I hold information about the food truck.  </p> </div>  <div class="card-action"> <a href="#">Link</a> </div> </div> </div>'
+      )
+
+    // create DOM element for the marker
+    var t1 = document.createElement('div');
+    t1.id = 'mexico';
+
+    var t2 = document.createElement('div');
+    t2.id = 'asian';
+
+    var t3 = document.createElement('div');
+    t3.id = 'bbq';
+
+    var t4 = document.createElement('div');
+    t4.id = 'ish';
+
+    // create the marker
+    new mapboxgl.Marker(t1)
+      .setLngLat(coord1)
+      .setPopup(mexPop) // sets a popup on this marker
+      .addTo(map)
+    new mapboxgl.Marker(t2)
+      .setLngLat(coord2)
+      .setPopup(asianPop) // sets a popup on this marker
+      .addTo(map)
+    new mapboxgl.Marker(t3)
+      .setLngLat(coord3)
+      .setPopup(bbqPop) // sets a popup on this marker
+      .addTo(map)
+    new mapboxgl.Marker(t4)
+      .setLngLat(coord4)
+      .setPopup(pop4) // sets a popup on this marker
+      .addTo(map)
+
     // Add geolocate control to the map.
     map.addControl(new mapboxgl.GeolocateControl({
-        positionOptions: {
-            enableHighAccuracy: true
-        },
-        trackUserLocation: true
+      positionOptions: {
+        enableHighAccuracy: true
+      },
+      trackUserLocation: true
     }));
-</script>
+    map.on('mousemove', function(e) {
+      document.getElementById('info').innerHTML =
+        // e.point is the x, y coordinates of the mousemove event relative
+        // to the top-left corner of the map
+        JSON.stringify(e.point) + '<br />' +
+        // e.lngLat is the longitude, latitude geographical position of the event
+        JSON.stringify(e.lngLat);
+    });
+  </script>
 </body>
+
 </html>
