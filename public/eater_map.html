@@ -21,20 +21,17 @@
             border-radius: 50%;
             cursor: pointer;
         }
-
         .mapboxgl-popup {
             max-width: 200px;
         }
-
     </style>
 </head>
 <body>
 
-<div id='map'></div>
+  <div id='map'></div>
 
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiZWRpc29udG9vbGUiLCJhIjoiY2pncXdnajM2MGg2ejJ4cGUzdW92bDNzcCJ9.YG4_JLO78bqmlpBcLHzuWw';
-
 var fluck = [-105.2705460, 40.0149860];
 var map = new mapboxgl.Map({
     container: 'map',
@@ -42,25 +39,20 @@ var map = new mapboxgl.Map({
     center: fluck,
     zoom: 15
 });
-
 var popup = new mapboxgl.Popup({closeOnClick: true})
     .setLngLat(fluck)
     .setHTML('<div class="card">  <div class="col s12 m6"> <div class="card-content black-text">  <span class="card-title">Food Truck!</span>  <p>I am a food truck card. I hold information about the food truck.  </p> </div>  <div class="card-action"> <a href="#">Link</a> </div> </div> </div>')
-
 // create DOM element for the marker
 var el = document.createElement('div');
 el.id = 'mexico';
 <<<<<<< HEAD
 =======
-
 >>>>>>> 886f185293ccbf24dc01434d73a803d0b530a3ba
-
 // create the marker
 new mapboxgl.Marker(el)
     .setLngLat(fluck)
     .setPopup(popup) // sets a popup on this marker
     .addTo(map);
-
     // Add geolocate control to the map.
     map.addControl(new mapboxgl.GeolocateControl({
         positionOptions: {
@@ -69,6 +61,5 @@ new mapboxgl.Marker(el)
         trackUserLocation: true
     }));
 </script>
-
 </body>
 </html>

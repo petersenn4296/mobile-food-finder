@@ -1,41 +1,46 @@
 <!DOCTYPE html>
-<html>
-
-<head>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Brand</title>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
-    <link rel="stylesheet" href="css/Login-Form-Dark.css">
-    <link rel="stylesheet" href="css/untitled.css">
-</head>
+    <title>MFF</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
 
-<body>
-    <main class="page lanidng-page">
-        <section class="portfolio-block block-intro">
-            <div class="container">
-                <div class="avatar" style="background-image:url(&quot;public/img/retro-food-truck_23-2147530708.jpg&quot;);width:160px;height:160px;"></div>
-                <div class="about-me">
-                    <p style="font-family:Lobster, cursive;font-size:100px;">MFF&nbsp;</p>
-                    <p style="font-family:Lobster, cursive;font-size:50px;">Mobile Food Finder&nbsp;</p>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center align-items-center content">
-              <a class="btn btn-outline-primary btn-lg" type="button" href="mapBox.html" style="font-family:Lobster, cursive;font-size:40px;">
-              Eaters
-            </a>
-            </div>
-            <a class="btn btn-outline-primary btn-lg" type="button" href="owner1.html" target="_parent" style="font-family:Lobster, cursive;margin-top:20px;">
-              Owners
-            </a>
-        </section>
-    </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
-    <script src="public/js/theme.js"></script>
-</body>
+<!-- Logo image -->
+    <div>
+      <div class="row logo">
+        <div class="col-xs-2"> </div>
+        <img src='img/food-truck.jpg' class='col-xs-8' id='homepagelogo'>
+        <div class="col-xs-2"> </div>
+      </div>
+    </div>
 
+<!-- MFF text -->
+    <div>
+      <div class="row mff mt-5">
+        <div class="col-xs-2"> </div>
+        <h1 class='colo-xs-8 mff'>MFF</h1>
+        <div class="col-xs-2"> </div>
+      </div>
+    </div>
+
+<!-- Eaters button -->
+    <div>
+      <div class="row eaters mt-5">
+        <a href="eater_map.html" class="btn btn-primary btn-lg" role="button">Eaters</a>
+      </div>
+    </div>
+
+<!-- Owners Button -->
+<div>
+  <div class="row owners mt-5">
+    <a href="owner_signon.html" class="btn btn-primary btn-lg" role="button">Owners</a>
+  </div>
+</div>
+
+  </body>
 </html>
