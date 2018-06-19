@@ -51,6 +51,14 @@
       border-radius: 50%;
       cursor: pointer;
     }
+    #ish {
+      background-image: url('/Users/edisontoole/g89/q2/projects/mobile-food-finder/public/img/food-truck.jpg');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
 
     .mapboxgl-popup {
       max-width: 200px;
@@ -81,7 +89,7 @@
     var coord1 = [-105.2705460, 40.0149860];
     var coord2 = [-105.25937825624439, 40.02993760281393];
     var coord3 = [-105.25937547070696, 40.02988516287684];
-
+    var coord4 = [-105.25937812395816, 40.0299116383556];
 
     var map = new mapboxgl.Map({
       container: 'map',
@@ -108,6 +116,13 @@
       .setHTML(
         '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text">  <span class="card-title">Food Truck!</span>  <p>I am a food truck card. I hold information about the food truck.  </p> </div>  <div class="card-action"> <a href="#">Link</a> </div> </div> </div>'
       )
+    var pop4 = new mapboxgl.Popup({
+        closeOnClick: true
+      })
+      .setHTML(
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text">  <span class="card-title">Food Truck!</span>  <p>I am a food truck card. I hold information about the food truck.  </p> </div>  <div class="card-action"> <a href="#">Link</a> </div> </div> </div>'
+      )
+
     // create DOM element for the marker
     var t1 = document.createElement('div');
     t1.id = 'mexico';
@@ -117,6 +132,9 @@
 
     var t3 = document.createElement('div');
     t3.id = 'bbq';
+
+    var t4 = document.createElement('div');
+    t4.id = 'ish';
 
     // create the marker
     new mapboxgl.Marker(t1)
@@ -130,6 +148,10 @@
     new mapboxgl.Marker(t3)
       .setLngLat(coord3)
       .setPopup(bbqPop) // sets a popup on this marker
+      .addTo(map)
+    new mapboxgl.Marker(t4)
+      .setLngLat(coord4)
+      .setPopup(pop4) // sets a popup on this marker
       .addTo(map)
 
     // Add geolocate control to the map.
