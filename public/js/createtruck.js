@@ -1,4 +1,14 @@
 $(document).ready(function() {
+  // $(function(){
+  //
+  //   $("#dropdownMenuButton").click(function(){
+  //
+  //     $(".btn:first-child").text($(this).text());
+  //     $(".btn:first-child").val($(this).text());
+  //
+  //   });
+  //
+  // });
 
 // Creating a truck
 $('#truckcreate').submit((e)=> {
@@ -9,4 +19,5 @@ $('#truckcreate').submit((e)=> {
     $('.result').html(result)
     });
   })
+
 })
