@@ -29,6 +29,7 @@ app.post('/create_truck', function(req, res, next) {
   let cuisines = req.body.cuisines
   let veggiefriendly = req.body.veggiefriendly
   let url = req.body.url
+  console.log(req.body);
   knex('trucks')
     .insert({
       "name": name,
@@ -44,13 +45,15 @@ app.post('/create_truck', function(req, res, next) {
     .catch((err) => {
       next(err)
     })
-
 })
+
+
 //Register OWNER
-app.post('owners/owner_signup', (req, res, next) => {
+app.post('/owner_signup', (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
   let email = req.body.email
+  console.log(req.body);
   knex('owners')
     .insert({
       "username": username, //hashed
