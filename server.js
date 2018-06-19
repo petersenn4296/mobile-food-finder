@@ -40,7 +40,7 @@ app.post('/owner_signup', (req, res, next) => {
       "password": password, //hashed
       "email": email
     })
-    // .returning('*')
+    .returning('*')
     .then((data) => {
       console.log(data[0]);
       res.json(data[0])
@@ -52,8 +52,22 @@ app.post('/owner_signup', (req, res, next) => {
 
 //Logging In OWNER
 app.post('/owner_login', (req, res, next) => {
-  knex.select('owners').where('username', username).where('password', password).then(function(data) {
-    res.send(data)
+  let username = req.body.username
+  let password = req.body.password
+  knex('owners').where({'username': username, 'password': password})
+  .returning('*')
+  .then((data) => {
+
+    // console.log(typeof data)
+    if (Object.values() == data[0][0] && password == data[0][1]) {
+      // res.json()
+      console.log('u did it');
+    } else {
+      console.log("u suk");
+    }
+  })
+  .catch((err) => {
+    next(err)
   })
   //code block to authenticate Owners username and password
 })
