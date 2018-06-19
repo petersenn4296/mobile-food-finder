@@ -6,7 +6,8 @@ $('#truckcreate').submit((e)=> {
   let data = $('#truckcreate').serialize();
   console.log('i am in here', data);
   $.post('/create_truck', data).done(function(result) {
-    $('.result').html(result)
+    // $('.result').html(result)
+    window.location.href = "owner_home.html"
 
     });
   })
