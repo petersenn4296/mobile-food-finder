@@ -23,12 +23,29 @@ app.use(express.static('public'))
 
 //////////////ROUTES//////////////
 
+//Create truck in database
+app.post('/create_truck', function(req, res, next) {
+  let name = req.body.name
+  // let cuisines = req.body.cuisines
+  let veggiefriendly = req.body.veggiefriendly
+  let url = req.body.url
+  knex('trucks')
+    .insert({
+      "name": name,
+      // "cuisines": cuisines,
+      "veggiefriendly": veggiefriendly,
+      "url": url
+    })
+    .returning('*')
+    .then((data) => {
+      console.log(data[0]);
+      res.json(data[0])
+    })
+    .catch((err) => {
+      next(err)
+    })
 
-//Landing page
-app.get('/', function(req, res, next) {
-  res.send("welcome to the home page")
 })
-
 //Register OWNER
 app.post('/owner_signup', (req, res, next) => {
   let username = req.body.username
@@ -51,7 +68,7 @@ app.post('/owner_signup', (req, res, next) => {
 })
 
 //Logging In OWNER
-app.post('/owner_login', (req, res, next) => {
+app.post('/owner_signon', (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
   knex('owners').where({'username': username, 'password': password})
@@ -72,11 +89,6 @@ app.post('/owner_login', (req, res, next) => {
   //code block to authenticate Owners username and password
 })
 
-//Logged In OWNER, DELETE truck from database
-app.delete('/trucks/:truck_id', (req, res, next) => {
-  res.send(200, "owner delete truck")
-    //code block to DELETE truck from database
-})
 
 
 ///////////STRETCH///////////
@@ -91,6 +103,17 @@ app.get('/:truck_id', function(req, res, next) {
   // return knex('trucks')
   //code block to get specific trucks locations from database
 });
+
+//Logged In OWNER, DELETE truck from database
+app.delete('/trucks/:truck_id', (req, res, next) => {
+  res.send(200, "owner delete truck")
+    //code block to DELETE truck from database
+})
+
+//Landing page
+app.get('/', function(req, res, next) {
+  res.send("welcome to the home page")
+})
 /////////STRETCH///////////
 
 //Catch all for bad requests

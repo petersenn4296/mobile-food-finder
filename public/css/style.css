@@ -37,6 +37,9 @@
 .create {
   justify-content: center;
 }
+.radiobuttons {
+  justify-content: space-around;
+}
 
 /* Owner Home page */
 
