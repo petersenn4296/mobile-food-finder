@@ -4,7 +4,7 @@
 <head>
   <meta charset='utf-8' />
   <title>MAP BOX</title>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">">
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
   <!-- Compiled and minified JavaScript -->
@@ -19,10 +19,10 @@
     }
 
     #map {
-      position: absolute;
       top: 0;
       bottom: 0;
       width: 100%;
+      height: 900px;
     }
 
     #mexico {
@@ -91,9 +91,22 @@
 </head>
 
 <body>
+  <nav>
+    <div class="blue-grey darken-4 nav-wrapper">
+      <a href="index.html" class="brand-logo center">MFF</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="secret.html" class="blue-grey-text text-darken-4">.</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-flex">
+    <div id='map'></div>
+    <!-- <pre id='info'></pre> -->
+  </div>
 
-  <div id='map'></div>
-  <pre id='info'></pre>
+
+
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZWRpc29udG9vbGUiLCJhIjoiY2pncXdnajM2MGg2ejJ4cGUzdW92bDNzcCJ9.YG4_JLO78bqmlpBcLHzuWw';
     var coord1 = [-105.2705460, 40.0149860];
