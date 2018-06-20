@@ -82,12 +82,7 @@ app.post('/owner_signon', (req, res, next) => {
     console.log(data)
     // res.send(data)
 
-    // if(data.length > 1) {
-    //   console.log('length is greater than 1');
-    // }
-
     if (data[0].password && data[0].username) {
-      // res.json()
       res.send(200, 'u did it');
     }
   })
