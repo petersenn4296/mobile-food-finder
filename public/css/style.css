@@ -19,6 +19,13 @@
   justify-content: center;
   /* width: 400px; */
 }
+.eatbutt{
+  color: black;
+  height: 300px;
+}
+/* .loginbutt {
+  margin-left: 75px;
+} */
 /* #button1 {
   height: 150px;
   width: 300px;
@@ -34,13 +41,48 @@
 
 
 /* Owner_signon page */
+
+
+/* form{
+  height: 150px;
+  width: 300px;
+} */
+#createowner {
+  margin-left: 75px;
+}
+#registerhead, #ownerhead {
+  font-size: 50px;
+}
+
 .signin {
   justify-content: center;
+  font-family: Lobster, cursive;
+  font-size: 35px;
+  margin-top: 50px;
+}
+
+/* .mom {
+  font-size: 350px;
+  color: black;
+} */
+
+.btn {
+  width: 250px;
 }
 
 /* Truck create page */
+
+.container{
+  margin-top: 400px;
+  font-size: 35px;
+}
 .heading {
   justify-content: center;
+  font-family: Lobster, cursive;
+  font-size: 5rem;
+}
+.mom {
+    font-size: 5rem;
 }
 .create {
   justify-content: center;

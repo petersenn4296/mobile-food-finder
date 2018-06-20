@@ -1,6 +1,6 @@
 /////////EXPRESS SERVER SET UP////////////
 
-//Variables to Require all dependencies and invoke as fucntions
+//Variables to Require all dependencies and invoke as functions
 let express = require('express')
 let morgan = require('morgan')
 let bodyParser = require('body-parser')
@@ -53,7 +53,6 @@ app.post('/owner_signup', (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
   let email = req.body.email
-  console.log(req.body);
   knex('owners')
     .insert({
       "username": username, //hashed
@@ -70,7 +69,7 @@ app.post('/owner_signup', (req, res, next) => {
     })
 })
 
-//Logging In OWNER
+// Logging In OWNER
 app.post('/owner_signon', (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
