@@ -1,6 +1,6 @@
 /////////EXPRESS SERVER SET UP////////////
 
-//Variables to Require all dependencies and invoke as fucntions
+//Variables to Require all dependencies and invoke as functions
 let express = require('express')
 let morgan = require('morgan')
 let bodyParser = require('body-parser')
