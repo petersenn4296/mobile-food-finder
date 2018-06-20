@@ -60,6 +60,7 @@
       border-radius: 50%;
       cursor: pointer;
     }
+
     #venezuelan {
       background-image: url('/Users/edisontoole/g89/q2/projects/mobile-food-finder/public/img/venezuelan.png');
       background-size: cover;
@@ -130,7 +131,7 @@
         closeOnClick: true
       })
       .setHTML(
-        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text">  <span class="card-title">WHEELS ON FIRE</span>  <p>Cuisines: Pizza </p> <p>Veggie Friendly? y </p> </div>  <div class="card-action"> <a href="https://wheelsonfirepizza.com/wheels-on-fire-pizza-truck-menu/">Website</a> </div> </div> </div>'
+        '<div class="card"> <div class="col s12 m6"> <div class="card-content black-text"><div class="card-image"><img src="images/sample-1.jpg"></div><span class="card-title">WHEELS ON FIRE</span>  <p>Cuisines: Pizza </p> <p>Veggie Friendly? y </p> </div>  <div class="card-action"> <a href="https://wheelsonfirepizza.com/wheels-on-fire-pizza-truck-menu/">Website</a> </div> </div> </div>'
       )
     var pop5 = new mapboxgl.Popup({
         closeOnClick: true
@@ -172,10 +173,10 @@
       .setLngLat(coord4)
       .setPopup(pop4) // sets a popup on this marker
       .addTo(map)
-      new mapboxgl.Marker(t5)
-        .setLngLat(coord5)
-        .setPopup(pop5) // sets a popup on this marker
-        .addTo(map)
+    new mapboxgl.Marker(t5)
+      .setLngLat(coord5)
+      .setPopup(pop5) // sets a popup on this marker
+      .addTo(map)
 
     // Add geolocate control to the map.
     map.addControl(new mapboxgl.GeolocateControl({
