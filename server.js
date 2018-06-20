@@ -53,7 +53,6 @@ app.post('/owner_signup', (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
   let email = req.body.email
-  console.log(req.body);
   knex('owners')
     .insert({
       "username": username, //hashed
