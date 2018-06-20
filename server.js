@@ -69,7 +69,7 @@ app.post('/owner_signup', (req, res, next) => {
     })
 })
 
-//Logging In OWNER
+// Logging In OWNER
 app.post('/owner_signon', (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
