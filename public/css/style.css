@@ -11,11 +11,10 @@
 }
 .mff {
   justify-content: center;
-}
-.mff {
   font-size: 150px;
   font-family: Lobster, cursive;
 }
+
 .eaters, .owners {
   justify-content: center;
   /* width: 400px; */
