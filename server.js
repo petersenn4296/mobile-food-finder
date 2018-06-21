@@ -29,13 +29,16 @@ app.post('/create_truck', function(req, res, next) {
   let cuisines = req.body.cuisines
   let veggiefriendly = req.body.veggiefriendly
   let url = req.body.url
-  console.log(req.body);
+  let latitude = req.body.latitude
+  let longitude = req.body.longitude
   knex('trucks')
     .insert({
       "name": name,
       "cuisine_id": cuisines,
       "veggiefriendly": veggiefriendly,
-      "url": url
+      "url": url,
+      "latitude": latitude,
+      "longitude": longitude
     })
     .returning('*')
     .then((data) => {
@@ -73,22 +76,36 @@ app.post('/owner_signup', (req, res, next) => {
 app.post('/owner_signon', (req, res, next) => {
   let username = req.body.username
   let password = req.body.password
-  knex('owners').where({'username': username, 'password': password})
-  .returning('*')
+  knex('owners')
+  .where('username', username)
+  .andWhere('password', password)
+  // .returning('*')
   .then((data) => {
+    console.log(data)
+    // res.send(data)
 
-    // console.log(typeof data)
-    if (Object.values() == data[0][0] && password == data[0][1]) {
-      // res.json()
-      console.log('u did it');
-    } else {
-      console.log("u suk");
+    if (data[0].password && data[0].username) {
+      res.send(200, 'u did it');
     }
   })
   .catch((err) => {
-    next(err)
+    res.send("Please enter the correct info")
   })
   //code block to authenticate Owners username and password
+})
+
+
+
+app.get('/eater_map', (req, res, next) => {
+  knex('trucks').select('latitude', 'longitude')
+  .returning('*')
+  .then((rows) => {
+      console.log('this is the data', rows);
+      res.json(rows)
+    })
+    .catch((err) => {
+      next("err", err)
+    })
 })
 
 
