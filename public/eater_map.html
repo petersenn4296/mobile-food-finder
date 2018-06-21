@@ -4,8 +4,8 @@
 <head>
   <meta charset='utf-8' />
   <title>MAP BOX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
   <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
   <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
   <!-- Compiled and minified JavaScript -->
@@ -19,10 +19,10 @@
     }
 
     #map {
-      position: absolute;
       top: 0;
       bottom: 0;
       width: 100%;
+      height: 1000px;
     }
 
     #mexico {
@@ -69,6 +69,14 @@
       border-radius: 50%;
       cursor: pointer;
     }
+    #tacos {
+      background-image: url('img/tacosdelnorte.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
 
     .mapboxgl-popup {
       max-width: 200px;
@@ -100,17 +108,32 @@
 </head>
 
 <body>
+  <nav>
+    <div class="blue-grey darken-4 nav-wrapper">
+      <a href="index.html" class="brand-logo center">MFF</a>
+    </div>
+  </nav>
+  <div class="container-flex">
+    <div id='map'></div>
+    <!-- <pre id='info'></pre> -->
+  </div>
 
+
+
+<<<<<<< HEAD
+=======
   <div id='map'></div>
-  <div id='work' style="z-index: 100">Hello</div>
-  <pre id='info'></pre>
+  <!-- <div id='work' style="z-index: 100">Hello</div> -->
+  <!-- <pre id='info'></pre> -->
+>>>>>>> b1e89ec9fd08debb56ba95368949193299f0f115
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZWRpc29udG9vbGUiLCJhIjoiY2pncXdnajM2MGg2ejJ4cGUzdW92bDNzcCJ9.YG4_JLO78bqmlpBcLHzuWw';
     var coord1 = [-105.2705460, 40.0149860];
     var coord2 = [-105.25937825624439, 40.02993760281393];
-    var coord3 = [-105.25937547070696, 40.02988516287684];
-    var coord4 = [-105.25937812395816, 40.0299116383556];
+    var coord3 = [-105.25937291886576, 40.02983966890952];
+    var coord4 = [-105.25937532907406, 40.02988369162421];
     var coord5 = [-105.25942070096528, 40.02997593536955];
+    var coord6 = [-105.25937227023765, 40.029785036088384];
 
     var map = new mapboxgl.Map({
       container: 'map',
@@ -123,31 +146,37 @@
         closeOnClick: true
       })
       .setHTML(
-        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/food-truck.jpg"></div>  <span class="card-title">EDISONS TRUCK</span>  <p>I am a food truck. We sell Mexico foods.  </p> </div>  <div class="card-action"> <a href="https://www.mexico.com">Website</a> </div> </div> </div>'
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/food-truck.jpg"></div>  <span class="card-title">FLYNT&#39;S TRUCK</span>  <p>Cuisine: American </p> <p>Veggie Friendly? F </p> </div>  <div class="card-action"> <a href="https://www.flynt.com">Website</a> </div> </div> </div>'
       )
     var mooPop = new mapboxgl.Popup({
         closeOnClick: true
       })
       .setHTML(
-        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/sweet-cow.png"></div> <span class="card-title">SWEET COW</span>  <p>Cuisines: Ice Cream </p> <p>Veggie Friendly? n </p> </div>  <div class="card-action"> <a href="http://www.sweetcowicecream.com/moomobile/">Website</a> </div> </div> </div>'
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/sweet-cow.png"></div> <span class="card-title">SWEET COW</span>  <p>Cuisines: Ice Cream </p> <p>Veggie Friendly? F </p> </div>  <div class="card-action"> <a href="http://www.sweetcowicecream.com/moomobile/">Website</a> </div> </div> </div>'
       )
     var bbqPop = new mapboxgl.Popup({
         closeOnClick: true
       })
       .setHTML(
-        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/wheelwhisk.jpg"></div> <span class="card-title">WHEEL AND WHISK</span>  <p>Cuisines: Tacos </p> <p>Veggie Friendly? y </p> </div>  <div class="card-action"> <a href="http://www.thewheelandwhisk.com/the-wheel--whisk-food-truck.html">Website</a> </div> </div> </div>'
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/wheelwhisk.jpg"></div> <span class="card-title">WHEEL AND WHISK</span>  <p>Cuisines: Tacos </p> <p>Veggie Friendly? T </p> </div>  <div class="card-action"> <a href="http://www.thewheelandwhisk.com/the-wheel--whisk-food-truck.html">Website</a> </div> </div> </div>'
       )
     var pop4 = new mapboxgl.Popup({
         closeOnClick: true
       })
       .setHTML(
-        '<div class="card"> <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/wheelfire.jpeg"></div> <span class="card-title">WHEELS ON FIRE</span>  <p>Cuisines: Pizza </p> <p>Veggie Friendly? y </p> </div>  <div class="card-action"> <a href="https://wheelsonfirepizza.com/wheels-on-fire-pizza-truck-menu/">Website</a> </div> </div> </div>'
+        '<div class="card"> <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/wheelfire.jpeg"></div> <span class="card-title">WHEELS ON FIRE</span>  <p>Cuisines: Pizza </p> <p>Veggie Friendly? T </p> </div>  <div class="card-action"> <a href="https://wheelsonfirepizza.com/wheels-on-fire-pizza-truck-menu/">Website</a> </div> </div> </div>'
       )
     var pop5 = new mapboxgl.Popup({
         closeOnClick: true
       })
       .setHTML(
-        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/venezuelan.png"></div> <span class="card-title">AREPAS HOUSE</span>  <p>Cuisines: Venezuelan </p> <p>Veggie Friendly? y </p> </div>  <div class="card-action"> <a href="https://www.arepashouse.com/">Website</a> </div> </div> </div>'
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/venezuelan.png"></div> <span class="card-title">AREPAS HOUSE</span>  <p>Cuisines: Venezuelan </p> <p>Veggie Friendly? T </p> </div>  <div class="card-action"> <a href="https://www.arepashouse.com/">Website</a> </div> </div> </div>'
+      )
+    var pop6 = new mapboxgl.Popup({
+        closeOnClick: true
+      })
+      .setHTML(
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/tacosdelnorte.png"></div> <span class="card-title">TACOS DEL NORTE</span>  <p>Cuisines: Tacos </p> <p>Veggie Friendly? T </p> </div>  <div class="card-action"> <a href="http://www.tacosdelnortetruck.com/">Website</a> </div> </div> </div>'
       )
 
     // create DOM element for the marker
@@ -165,6 +194,9 @@
 
     var t5 = document.createElement('div');
     t5.id = 'venezuelan';
+
+    var t6 = document.createElement('div');
+    t6.id = 'tacos';
 
     // create the marker
     new mapboxgl.Marker(t1)
@@ -186,6 +218,10 @@
     new mapboxgl.Marker(t5)
       .setLngLat(coord5)
       .setPopup(pop5) // sets a popup on this marker
+      .addTo(map)
+    new mapboxgl.Marker(t6)
+      .setLngLat(coord6)
+      .setPopup(pop6) // sets a popup on this marker
       .addTo(map)
 
     // Add geolocate control to the map.
