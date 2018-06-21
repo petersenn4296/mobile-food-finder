@@ -69,8 +69,36 @@
       border-radius: 50%;
       cursor: pointer;
     }
+
     #tacos {
       background-image: url('img/tacosdelnorte.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #poop {
+      background-image: url('img/red.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #boop {
+      background-image: url('img/green.png');
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #shoop {
+      background-image: url('img/purple.png');
       background-size: cover;
       width: 50px;
       height: 50px;
@@ -95,6 +123,7 @@
       color: #222;
       background: #fff;
     }
+
     #newDiv {
       background-image: url('img/venezuelan.png');
       /* background: red; */
@@ -124,12 +153,15 @@
   <!-- <pre id='info'></pre> -->
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZWRpc29udG9vbGUiLCJhIjoiY2pncXdnajM2MGg2ejJ4cGUzdW92bDNzcCJ9.YG4_JLO78bqmlpBcLHzuWw';
-    var coord1 = [-105.281648 ,40.016627];
+    var coord1 = [-105.281648, 40.016627];
     var coord2 = [-105.25937825624439, 40.02993760281393];
     var coord3 = [-105.25937291886576, 40.02983966890952];
     var coord4 = [-105.25937532907406, 40.02988369162421];
     var coord5 = [-105.25942070096528, 40.02997593536955];
     var coord6 = [-105.25937227023765, 40.029785036088384];
+    var coord7 = [-105.281788, 40.025431];
+    var coord8 = [-105.271840, 40.025565];
+    var coord9 = [-105.273274, 40.019042];
 
     var map = new mapboxgl.Map({
       container: 'map',
@@ -174,7 +206,18 @@
       .setHTML(
         '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/tacosdelnorte.png"></div> <span class="card-title">TACOS DEL NORTE</span>  <p>Cuisines: Tacos </p> <p>Veggie Friendly? T </p> </div>  <div class="card-action"> <a href="http://www.tacosdelnortetruck.com/">Website</a> </div> </div> </div>'
       )
-
+    var pop7 = new mapboxgl.Popup({
+        closeOnClick: true
+      })
+      .setHTML(
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/food-truck.jpg"></div>  <span class="card-title">FOOD TRUCK</span>  <p>Cuisine:  </p> <p>Veggie Friendly?  </p> </div>  <div class="card-action"> <a href="https://www.google.com">Website</a> </div> </div> </div>'
+      )
+    var pop8 = new mapboxgl.Popup({
+        closeOnClick: true
+      })
+      .setHTML(
+        '<div class="card">  <div class="col s12 m6"> <div class="card-content black-text"> <div class="card-image"><img src="img/food-truck.jpg"></div>  <span class="card-title">FOOD TRUCK</span>  <p>Cuisine:  </p> <p>Veggie Friendly?  </p> </div>  <div class="card-action"> <a href="https://www.google.com">Website</a> </div> </div> </div>'
+      )
     // create DOM element for the marker
     var t1 = document.createElement('div');
     t1.id = 'mexico';
@@ -194,7 +237,20 @@
     var t6 = document.createElement('div');
     t6.id = 'tacos';
 
+    var t7 = document.createElement('div');
+    t7.id = 'poop';
+
+    var t8 = document.createElement('div');
+    t8.id = 'boop';
+
+    var t8 = document.createElement('div');
+    t8.id = 'shoop';
+
     // create the marker
+    new mapboxgl.Marker(t1)
+      .setLngLat(coord1)
+      .setPopup(mexPop) // sets a popup on this marker
+      .addTo(map)
     new mapboxgl.Marker(t2)
       .setLngLat(coord2)
       .setPopup(mooPop) // sets a popup on this marker
@@ -215,10 +271,19 @@
       .setLngLat(coord6)
       .setPopup(pop6) // sets a popup on this marker
       .addTo(map)
-    new mapboxgl.Marker(t1)
-      .setLngLat(coord1)
-      .setPopup(mexPop) // sets a popup on this marker
+    new mapboxgl.Marker(t7)
+      .setLngLat(coord7)
+      .setPopup(pop7) // sets a popup on this marker
       .addTo(map)
+    new mapboxgl.Marker(t8)
+      .setLngLat(coord8)
+      .setPopup(pop8) // sets a popup on this marker
+      .addTo(map)
+    new mapboxgl.Marker(t9)
+      .setLngLat(coord9)
+      .setPopup(pop9) // sets a popup on this marker
+      .addTo(map)
+
 
     // Add geolocate control to the map.
     map.addControl(new mapboxgl.GeolocateControl({
@@ -227,14 +292,14 @@
       },
       trackUserLocation: true
     }));
-    map.on('mousemove', function(e) {
-      document.getElementById('info').innerHTML =
-        // e.point is the x, y coordinates of the mousemove event relative
-        // to the top-left corner of the map
-        JSON.stringify(e.point) + '<br />' +
-        // e.lngLat is the longitude, latitude geographical position of the event
-        JSON.stringify(e.lngLat);
-    });
+    // map.on('mousemove', function(e) {
+    //   document.getElementById('info').innerHTML =
+    //     // e.point is the x, y coordinates of the mousemove event relative
+    //     // to the top-left corner of the map
+    //     JSON.stringify(e.point) + '<br />' +
+    //     // e.lngLat is the longitude, latitude geographical position of the event
+    //     JSON.stringify(e.lngLat);
+    // });
   </script>
 </body>
 
