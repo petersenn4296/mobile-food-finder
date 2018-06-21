@@ -17,36 +17,19 @@
 
 .eaters, .owners {
   justify-content: center;
-  /* width: 400px; */
 }
-.eatbutt{
-  color: black;
-  height: 300px;
-}
-/* .loginbutt {
-  margin-left: 75px;
-} */
-/* #button1 {
-  height: 150px;
-  width: 300px;
-  font-size: 150px;
-  font-family: Lobster, cursive;
-} */
-#eaterbutton {
+
+
+#eaterbutton, #eaterbutton1  {
   height: 150px;
   width: 300px;
   font-size: 70px;
-    font-family: Lobster, cursive;
+  font-family: Lobster, cursive;
 }
 
 
 /* Owner_signon page */
 
-
-/* form{
-  height: 150px;
-  width: 300px;
-} */
 #createowner {
   margin-left: 75px;
 }
@@ -54,17 +37,19 @@
   font-size: 50px;
 }
 
+#ownerhead {
+  margin-top: 400px;
+}
+#userinput {
+  height: 58px;
+  width: 387px;
+}
 .signin {
   justify-content: center;
   font-family: Lobster, cursive;
   font-size: 35px;
   margin-top: 50px;
 }
-
-/* .mom {
-  font-size: 350px;
-  color: black;
-} */
 
 .btn {
   width: 250px;
@@ -86,6 +71,7 @@
 }
 .create {
   justify-content: center;
+  align-items: center;
 }
 .radiobuttons {
   justify-content: space-around;

@@ -29,13 +29,16 @@ app.post('/create_truck', function(req, res, next) {
   let cuisines = req.body.cuisines
   let veggiefriendly = req.body.veggiefriendly
   let url = req.body.url
-  console.log(req.body);
+  let latitude = req.body.latitude
+  let longitude = req.body.longitude
   knex('trucks')
     .insert({
       "name": name,
       "cuisine_id": cuisines,
       "veggiefriendly": veggiefriendly,
-      "url": url
+      "url": url,
+      "latitude": latitude,
+      "longitude": longitude
     })
     .returning('*')
     .then((data) => {
@@ -89,6 +92,20 @@ app.post('/owner_signon', (req, res, next) => {
     res.send("Please enter the correct info")
   })
   //code block to authenticate Owners username and password
+})
+
+
+
+app.get('/eater_map', (req, res, next) => {
+  knex('trucks').select('latitude', 'longitude')
+  .returning('*')
+  .then((rows) => {
+      console.log('this is the data', rows);
+      res.json(rows)
+    })
+    .catch((err) => {
+      next("err", err)
+    })
 })
 
 
