@@ -1,6 +1,25 @@
-.color {
-  background-color: lightblue
+html {
+  height:100%
 }
+body {
+  height:100%;
+
+}
+.size {
+  font-size: 60px;
+  font-weight: bold;
+}
+.sign {
+  font-family: Lobster,cursive;
+  text-align: center;
+  justify-content: center;
+}
+.color {
+  background-color: lightblue;
+  text-align: center;
+}
+
+
 /* Index page */
 .logo {
   justify-content: center;
@@ -29,33 +48,34 @@
 }
 
 
+
 /* Owner_signon page */
 
-#createowner {
-  margin-left: 75px;
-}
-#registerhead, #ownerhead {
-  font-size: 50px;
+form .signin{
+  height: 100%;
+  width: 70%;
+  justify-content: center;
+
 }
 
-#ownerhead {
-  margin-top: 400px;
+.form-control {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-#userinput {
-  height: 58px;
-  width: 387px;
-}
+
+
 .signin {
   justify-content: center;
   font-family: Lobster, cursive;
-  font-size: 35px;
+  height:30%;
+  font-size: 50px;
   margin-top: 50px;
 }
 
-.btn {
-  width: 250px;
+.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    font-size: 3rem;
 }
-
 /* Truck create page */
 
 .container{
@@ -67,9 +87,7 @@
   font-family: Lobster, cursive;
   font-size: 5rem;
 }
-.mom {
-    font-size: 5rem;
-}
+
 .create {
   justify-content: center;
   align-items: center;
@@ -77,6 +95,12 @@
 .radiobuttons {
   justify-content: space-around;
 }
+/* .signinform {
+  justify-content: center;
+  width:100%;
+  /* font-size: 50px; */
+  /* height:100%
+} */
 
 /* Owner Home page */
 
