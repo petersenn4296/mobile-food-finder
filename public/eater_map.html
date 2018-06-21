@@ -120,15 +120,11 @@
 
 
 
-<<<<<<< HEAD
-=======
   <div id='map'></div>
-  <!-- <div id='work' style="z-index: 100">Hello</div> -->
   <!-- <pre id='info'></pre> -->
->>>>>>> b1e89ec9fd08debb56ba95368949193299f0f115
   <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZWRpc29udG9vbGUiLCJhIjoiY2pncXdnajM2MGg2ejJ4cGUzdW92bDNzcCJ9.YG4_JLO78bqmlpBcLHzuWw';
-    var coord1 = [-105.2705460, 40.0149860];
+    var coord1 = [-105.281648 ,40.016627];
     var coord2 = [-105.25937825624439, 40.02993760281393];
     var coord3 = [-105.25937291886576, 40.02983966890952];
     var coord4 = [-105.25937532907406, 40.02988369162421];
@@ -139,7 +135,7 @@
       container: 'map',
       style: 'mapbox://styles/mapbox/streets-v9',
       center: coord1,
-      zoom: 12
+      zoom: 2
     });
 
     var mexPop = new mapboxgl.Popup({
@@ -199,10 +195,6 @@
     t6.id = 'tacos';
 
     // create the marker
-    new mapboxgl.Marker(t1)
-      .setLngLat(coord1)
-      .setPopup(mexPop) // sets a popup on this marker
-      .addTo(map)
     new mapboxgl.Marker(t2)
       .setLngLat(coord2)
       .setPopup(mooPop) // sets a popup on this marker
@@ -222,6 +214,10 @@
     new mapboxgl.Marker(t6)
       .setLngLat(coord6)
       .setPopup(pop6) // sets a popup on this marker
+      .addTo(map)
+    new mapboxgl.Marker(t1)
+      .setLngLat(coord1)
+      .setPopup(mexPop) // sets a popup on this marker
       .addTo(map)
 
     // Add geolocate control to the map.
