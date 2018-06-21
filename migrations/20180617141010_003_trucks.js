@@ -4,10 +4,10 @@ exports.up = function(knex, Promise) {
   table.string('name').notNullable().defaultTo('')
   table.integer('owner_id').unsigned().index().references('id').inTable('owners').onDelete('CASCADE')
   table.integer('cuisine_id').unsigned().index().references('id').inTable('cuisines').onDelete('CASCADE')
-  table.boolean('veggiefriendly').notNullable()
+  table.boolean('veggiefriendly')
   table.string('url').notNullable().defaultTo('')
-  table.string('latitude').notNullable().defaultTo('')
-  table.string('longitude').notNullable().defaultTo('') // does this need to  ! .integer??
+  table.float('latitude')
+  table.float('longitude')// does this need to  ! .integer??
   })
 };
 
