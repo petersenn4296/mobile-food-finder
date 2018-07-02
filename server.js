@@ -24,25 +24,18 @@ app.use(express.static('public'))
 //////////////ROUTES//////////////
 
 //Create truck in database
-app.post('/create_truck', function(req, res, next) {
-  let name = req.body.name
-  let cuisines = req.body.cuisines
-  let veggiefriendly = req.body.veggiefriendly
-  let url = req.body.url
-  let latitude = req.body.latitude
-  let longitude = req.body.longitude
+app.post('/create_truck', (req, res, next) => {
   knex('trucks')
     .insert({
-      "name": name,
-      "cuisine_id": cuisines,
-      "veggiefriendly": veggiefriendly,
-      "url": url,
-      "latitude": latitude,
-      "longitude": longitude
+      "name": req.body.name,
+      "cuisine_id": req.body.cuisines,
+      "veggiefriendly": req.body.veggiefriendly,
+      "url": req.body.url,
+      "latitude": req.body.latitude,
+      "longitude": req.body.longitude
     })
     .returning('*')
     .then((data) => {
-      console.log(data[0]);
       res.json(data[0])
     })
     .catch((err) => {
@@ -53,14 +46,11 @@ app.post('/create_truck', function(req, res, next) {
 
 //Register OWNER
 app.post('/owner_signup', (req, res, next) => {
-  let username = req.body.username
-  let password = req.body.password
-  let email = req.body.email
   knex('owners')
     .insert({
-      "username": username, //hashed
-      "password": password, //hashed
-      "email": email
+      "username": req.body.username,
+      "password": req.body.password, //hashed
+      "email": req.body.email
     })
     .returning('*')
     .then((data) => {
@@ -69,21 +59,15 @@ app.post('/owner_signup', (req, res, next) => {
     })
     .catch((err) => {
       next(err)
-    })
+  })
 })
 
 // Logging In OWNER
 app.post('/owner_signon', (req, res, next) => {
-  let username = req.body.username
-  let password = req.body.password
   knex('owners')
-  .where('username', username)
-  .andWhere('password', password)
-  // .returning('*')
+  .where('username', req.body.username)
+  .andWhere('password', req.body.password)
   .then((data) => {
-    console.log(data)
-    // res.send(data)
-
     if (data[0].password && data[0].username) {
       res.send(200, 'u did it');
     }
@@ -91,7 +75,6 @@ app.post('/owner_signon', (req, res, next) => {
   .catch((err) => {
     res.send("Please enter the correct info")
   })
-  //code block to authenticate Owners username and password
 })
 
 
@@ -100,12 +83,11 @@ app.get('/eater_map', (req, res, next) => {
   knex('trucks').select('latitude', 'longitude')
   .returning('*')
   .then((rows) => {
-      console.log('this is the data', rows);
       res.json(rows)
     })
     .catch((err) => {
       next("err", err)
-    })
+  })
 })
 
 
@@ -118,7 +100,7 @@ app.patch('/owners/:owners_ID/trucks/:truck_id/', (req, res, next) => {
 })
 
 ///EATER GET specific truck info on map
-app.get('/:truck_id', function(req, res, next) {
+app.get('/:truck_id', (req, res, next) => {
   // return knex('trucks')
   //code block to get specific trucks locations from database
 });
@@ -130,7 +112,7 @@ app.delete('/trucks/:truck_id', (req, res, next) => {
 })
 
 //Landing page
-app.get('/', function(req, res, next) {
+app.get('/', (req, res, next) => {
   res.send("welcome to the home page")
 })
 /////////STRETCH///////////

@@ -10,6 +10,6 @@ exports.seed = function (knex, Promise) {
     }).then(() => {
       return knex.raw(
         `SELECT setval('trucks_cuisines_id_seq', (SELECT MAX(id) FROM trucks_cuisines));`
-      );
-    })
+    )
+  })
 }
